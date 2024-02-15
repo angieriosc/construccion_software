@@ -2,53 +2,59 @@
 <html>
 <head>
     <title>Musica</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
-        <h1>Música</h1>
+        <h1 id="titulo"> Música</h1>
     </header>
     <section>
-        <article>
-            <h2>¿Qué es la música?</h2>
-            <p>La música es la combinación ordenada de ritmo, melodía y armonía que resulta agradable a los oídos. 
+        <article id="fondo">
+            <h2 id="subtitulo">¿Qué es la música?</h2>
+            <p class="texto">La música es la combinación ordenada de ritmo, melodía y armonía que resulta agradable a los oídos. 
                 Apesar de que se desconoce cuando comenzo la música, los expertos consideran que la música
                 ha existido desde que existe el hombre. Se cree que durante la Prehistoria, la música ya existía en los 
                 antiguos pueblos. Si bien todavía no existían instrumentos musicales, sí podían hacer música 
                 mediante el choque de piedras o trozos de madera o incluso con choques de manos, 
                 en el cuerpo o en otro elemento. También se entiende que los cantos ya existían en los antiguos pueblos prehistóricos.
             </p>
-            <img src="img/music.jpg" height="200" />
-            <p>La música puede expresar diferentes temas y sentimientos es por eso que se clasifican en distintos géneros musicales. 
+            <img src="music.jpg" height="200" />
+            <p class="texto">La música puede expresar diferentes temas y sentimientos es por eso que se clasifican en distintos géneros musicales. 
                 A continuación se muestra una lista de mis canciones favoritas de algunos de los géneros más conocidos. </p> 
             <h3>Pop en ingles</h3>
             <ol>
-                <li> Keep Driving - Harry Styles</li>
-                <li> Feather - Sabrina Carpenter</li>
-                <li> Vampire - Olivia Rodrígo</li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=qbcmsEIHWeE">Keep Driving - Harry Styles</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=kLbn61Z4LDI">Feather - Sabrina Carpenter</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=RlPNh_PBZb4">Vampire - Olivia Rodrígo</a></li>
             </ol>
             <h3>Pop en español</h3>
             <ol>
-                <li> Si no estas - Iñigo Quintero</li>
-                <li> Aire - NSQK y Nicole</li>
-                <li> Lo hecho esta hecho - Shakira</li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=vldYYjCQ7jc">Si no estas - Iñigo Quintero</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=zznvOUnqKlI">Aire - NSQK y Nicole</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=N31b8DrmzVM">Lo hecho esta hecho - Shakira</a></li>
+                
             </ol>
             <h3>Rock</h3>
             <ol>
-                <li> Barracuda - Heart</li>
-                <li> Bohemian Rhapsody - Queen</li>
-                <li> Honey(Are you coming?) - Maneskin</li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=VdOkQ6THDVw">Barracuda - Heart</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ">Bohemian Rhapsody - Queen</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=ds18Ozzp8h0">Honey(Are you coming?) - Maneskin</a></li>
             </ol>
             <h3>Música Clasica</h3>
             <ol>
-                <li> Canon in D - Johann Pachelbel</li>
-                <li> Las cuatro estaciones - Vivaldi</li>
-                <li> Claro de Luna - Beethoven</li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=NlprozGcs80">Canon in D - Johann Pachelbel</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=7DBIR30ks64">Las cuatro estaciones - Vivaldi</a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=FCFCCnBbFUM">Claro de Luna - Beethoven</a></li>
             </ol>
-        </article>
-        <article>
             <br>
-            <h2>Cuestionario personal</h2>
-            <form action="/formulario" method="POST">
+            <br>
+            <br>
+            <br>
+        </article>
+        <article id="cuest">
+            <br>
+            <h2 id="cuestionario">Cuestionario personal</h2>
+            <form id="formul" action="/formulario" method="POST">
                 <p> Escribe tu canción y artista favoritos</p>
                 <label for="nombre_can">Canción: </label>
                 <input id="nombre_can" name="nombre_canción" placeholder="Hello"/>
