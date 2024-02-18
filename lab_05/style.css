@@ -34,10 +34,6 @@ body.dark{
     --search-bar: #242526;
 }
 
-body.dark a:link,
-body.dark a:visited {
-    color: var(--text-color); /* Establece el color de los enlaces en blanco */
-}
 
 nav{
     position: fixed;
@@ -346,9 +342,31 @@ body.dark #formul {
     
 a:link {
         font-size: 20px;
+        text-decoration: none; /* Elimina la decoración de los enlaces visitados */
+        color: #003ce0; 
 }
-
+a:visited {
+    text-decoration: none; /* Elimina la decoración de los enlaces visitados */
+    color: #003ce0; /* Define el color de los enlaces visitados en modo oscuro */
+}
+a:hover{
+    color:#a13cff
+}
 .list {
         font-size: 18px;
         font-weight: bold;
+}
+
+body.dark a:link {
+    text-decoration: none; /* Elimina la decoración de los enlaces visitados */
+    color: #fff; /* Hereda el color del texto del elemento padre */
+}
+
+body.dark a:visited {
+    text-decoration: none; /* Elimina la decoración de los enlaces visitados */
+    color: #fff; /* Define el color de los enlaces visitados en modo oscuro */
+}
+
+body.dark a:hover{
+    color:#a13cff
 }
