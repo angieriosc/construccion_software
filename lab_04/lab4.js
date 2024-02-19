@@ -91,7 +91,6 @@ function sumaRecursiva(){
 console.log("Generación de tabla de cuadrados y cubos");
 const numero = prompt("Ingresa un numero:");
 
-document.write("<h1>Lab_04</h1>");
 document.write("<h3>Tabla de Cuadrados y Cubos hasta " + numero + "</h3>");
 document.write("<table border='2'>");
 document.write("<tr><th>Numero</th><th>Cuadrado</th><th>Cubo</th></tr>");
@@ -142,3 +141,60 @@ document.write("<h3>Suma Recursiva</h3>");
 document.write("<label for='sumInput'>Ingresa un numero y se calculara la suma de todos los numeros positivos anteriores mas el numero ingresado de manera recursiva:</label>");
 document.write("<input type='text' id='sumInput'></input>  ");
 document.write("<button onclick='sumaRecursiva()'>Calcular suma</button>");
+
+
+// Definición del objeto Tarea
+function Tarea(title, description) {
+    this.title = title;
+    this.description = description;
+    this.completed = false;
+}
+
+// Métodos del objeto Tarea
+Tarea.prototype.completeTask = function() {
+    this.completed = true;
+    console.log(`La tarea "${this.title}" ha sido completada.`);
+}
+
+Tarea.prototype.displayTask = function() {
+    let status = this.completed ? "Completada" : "Pendiente";
+    return `<strong>${this.title}</strong>: ${this.description} - Estado: ${status}`;
+}
+
+// Función para agregar una nueva tarea
+function addTask(title, description) {
+    let task = new Tarea(title, description);
+    tasks.push(task);
+    console.log(`Se ha agregado la tarea "${title}".`);
+    displayTasks();
+}
+
+// Función para mostrar todas las tareas pendientes
+function displayTasks() {
+    let tasksContainer = document.getElementById('tasksContainer');
+    tasksContainer.innerHTML = '<h2>Tareas Pendientes</h2>';
+    tasks.forEach(task => {
+        if (!task.completed) {
+            tasksContainer.innerHTML += `<p>${task.displayTask()} <button onclick="completeTask('${task.title}')">Completar</button></p>`;
+        }
+    });
+}
+
+// Función para marcar una tarea como completada
+function completeTask(title) {
+    let task = tasks.find(task => task.title === title);
+    if (task) {
+        let response = prompt(`¿Ya completaste la tarea "${title}"? (responde si o no)`);
+        if (response && response.toLowerCase() === 'si') {
+            task.completeTask();
+            displayTasks();
+        }
+    }
+}
+
+// Lista de tareas
+let tasks = [];
+
+// Ejemplos de tareas
+addTask("Hacer la compra", "Comprar leche, pan y huevos");
+addTask("Estudiar para el examen", "Revisar apuntes y resolver ejercicios");
