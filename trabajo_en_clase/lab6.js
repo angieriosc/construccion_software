@@ -1,4 +1,5 @@
 const boton = document.getElementById("boton_construir");
+
 const construir_casa = () => {
     const imagen = document.getElementById("imagen_construir");
     imagen.src = "https://th.bing.com/th/id/OIP.C6QT0gxNAxWjQrrRSD8NMQAAAA?rs=1&pid=ImgDetMain";
