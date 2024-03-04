@@ -1,0 +1,27 @@
+{
+  "name": "package_a",
+  "version": "1.0.0",
+  "description": "Repositorio cuarto semestre",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Angelica Rios Cuentas",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angieriosc/construccion_software.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angieriosc/construccion_software/issues"
+  },
+  "homepage": "https://github.com/angieriosc/construccion_software#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
