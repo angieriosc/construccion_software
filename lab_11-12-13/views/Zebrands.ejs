@@ -2,6 +2,7 @@
 <br>
 <br>
 <h1 class="title">Agregar un botón</h1>
+
 <form action="/zebrand" method="POST">
     <label class="label" for="nombre">Texto del Botón</label>
     <input name="nombre" id="nombre" type="text" class="input"><br>
@@ -12,6 +13,12 @@
     <div class="notification is-success">
         <button class="delete"></button>
         <%= mensaje %>
+    </div>
+<% } %>
+
+<% if (mensaje.success) { %>
+    <div class="notification is-success">
+        <button class="delete"></button>
     </div>
 <% } %>
 
