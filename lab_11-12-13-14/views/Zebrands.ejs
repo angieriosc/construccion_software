@@ -28,4 +28,16 @@
 <% }); %>
 <br>
 <br>
+
+<section>
+    <article>
+      <br />
+      <h2 id="seccion">Upload</h2>
+      <form action="/archivo" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Subir archivo</button>
+      </form>
+    </article>
+  </section>
+
 <%- include('includes/foot.ejs') %>

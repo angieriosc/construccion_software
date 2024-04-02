@@ -1,0 +1,15 @@
+<%- include('includes/head.ejs') %>
+<section>
+  <article>
+    <br />
+    <h2 id="seccion">Upload</h2>
+    <!-- Mostrar el archivo subido -->
+    <h3>Archivo subido:</h3>
+    <p>Nombre: <%= fileName %></p>
+    <p>Ruta: <%= filePath %></p>
+    <!-- Agregar imagen -->
+    <img src="<%= filePath %>" alt="Archivo subido">
+  </article>
+</section>
+
+<%- include('includes/foot.ejs') %>
