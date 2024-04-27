@@ -5,6 +5,7 @@ const body = document.querySelector("body"),
       sidebar = body.querySelector(".side_bar"),
       toggle = body.querySelector(".toggle"),
       siderbarClose = document.querySelector(".siderbarClose");
+      
 
       toggle.addEventListener("click", () => {
         sidebar.classList.toggle("close");

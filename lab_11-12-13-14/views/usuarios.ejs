@@ -5,4 +5,467 @@
     <h2 id="seccion">Usuarios</h2>
   </article>
 </section>
+<body>
+	<div class="header">
+		<h1>INFO</h1>
+		<input class="input" type="text" id="input" placeholder="Pokédex Number...">
+		<button id="go" class="pokedex-button" onclick="submit()">Go</button>
+		<button id="random" class="pokedex-button" onclick="random()">Random Pokémon</button>
+		<button id="clear" class="button-clear">x</button>
+	</div>
+	<div class="pokedex-screen">
+		<img class="pokedex-img" id="img" src="" alt="">
+	</div>
+	
+	<div class="info">
+	<div id="data1" class="pokedex-data">
+		<p class="pokedex-data-text"><span id="text_id"></span> <span id="text_name"></span></p>
+	</div>
+	
+		<p class="pokedex-data-text ability">Ability: <span id="text_ability"></span></p> <br>
+		<p class="pokedex-data-text ability">Type(s):</p>
+		<div id="data2" class="pokedex-data">
+			<p class="pokedex-data-text"><span id="text_type"> </span><span class="space"></span><span id="text_type2"></span></p>
+	</div>
+	</div>
+
+</body>
+
+<head>
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
+  <style>
+    :root {
+      --bgColor1: #d8f8f8;
+      --bgColor2: #c0f0f8;
+      --size: 50px;
+      
+      --smColor1: #f8f8f8;
+      --smColor2: #f0f0f8;
+      
+      --top: #0060f0;
+      --titleBg: #f8f8c0;
+      
+      --infoBg: #f8f8c0;
+      
+      --textColour: #606060;
+      --textWhite: #f8f8f8;
+      
+      --borderColour: #f8f898;
+      --typeBorderColour: #586060;
+    }
+    
+    * {
+      margin: 0;
+      font-size: 16px;
+      font-family: "Press Start 2P", sans-serif;
+      -webkit-font-smoothing: none;
+    }
+    
+    body {
+      background-image: linear-gradient(
+          45deg,
+          var(--bgColor1) 25%,
+          transparent 25%,
+          transparent 75%,
+          var(--bgColor1) 75%
+        ),
+        linear-gradient(
+          45deg,
+          var(--bgColor1) 25%,
+          var(--bgColor2) 25%,
+          var(--bgColor2) 75%,
+          var(--bgColor1) 75%
+        );
+      background-size: var(--size) var(--size);
+      background-position: 0 0, calc(var(--size)/2) calc(var(--size)/2);
+    
+      color: var(--textColour);
+    }
+    
+    .space {
+      padding: 10px;
+    }
+    
+    h1 {
+      color: var(--textWhite);
+      font-size: 1.6rem;
+      display: inline-block;
+    }
+    
+    p {
+      font-size: 1.2rem;
+    }
+    
+    span {
+      text-transform: capitalize;
+      font-size: 1.2rem;
+    }
+    
+    #text_type,
+    #text_type2 {
+      text-transform: uppercase;
+    }
+    
+    .header {
+      background: var(--top);
+      padding: 20px;
+    }
+    
+    .input {
+      padding: 10px;
+      border-radius: 10px;
+    }
+    
+    button {
+      padding: 10px;
+      border-radius: 10px;
+      background-color: lightgrey;
+    }
+    
+    .info {
+      display: inline-block;
+      background-color: var(--infoBg);
+      border-radius: 20px;
+      margin-top: 50px;
+      padding: 10px 60px 20px 10px;
+    }
+    
+    .ability {
+      padding-left: 15px;
+    }
+    
+    #data1,
+    #data2 {
+      padding: 15px;
+    }
+    
+    #data2 {
+      padding-top: 30px;
+    }
+    
+    #text_type,
+    #text_type2 {
+      padding: 10px;
+      color: white;
+      border: 2px solid var(--typeBorderColour);
+      border-radius: 10px;
+    }
+    
+    .pokedex-screen {
+      display: inline-block;
+      overflow: hidden;
+      float: left;
+      margin: 40px;
+      width: 300px;
+      background-image: linear-gradient(
+        0deg,
+        var(--smColor1) 25%,
+        var(--smColor2) 25%,
+        var(--smColor2) 50%,
+        var(--smColor1) 50%,
+        var(--smColor1) 75%,
+        var(--smColor2) 75%,
+        var(--smColor2) 100%
+      );
+      background-size: 80px 80px;
+      border-radius: 30px;
+      border: 10px solid var(--borderColour);
+    }
+    
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<script>
+	var normal = "#ADA480";
+	var fighting = "#C22F26";
+	var flying = "#B49AF6";
+	var poison = "#A43FA4";
+	var ground = "#DEBE63";
+	var rock = "#B49E38";
+	var bug = "#A8B531";
+	var ghost = "#6E5391";
+	var steel = "#B8B5CF";
+	var fire = "#F07D33";
+	var water = "#6D88F8";
+	var grass = "#81CB5B";
+	var electric = "#E9D436";
+	var psychic = "#FF598D";
+	var ice = "#9AD9DA";
+	var dragon = "#723EFC";
+	var dark = "#705749";
+	var fairy = "#E1A4E1";
+
+
+var go;
+var clear;
+
+var img;
+var textId;
+var textName;
+var textAbility;
+var textType;
+var textType2;
+
+var param;
+
+$(function() {
+  img = $('#img');
+  go = $("#go");
+  clear = $('#clear');
+  textId = $('#text_id');
+  textName = $('#text_name');
+  textAbility = $('#text_ability');
+  textType = $('#text_type');
+	textType2 = $('#text_type2');
+  param = $('#input');
+});
+
+function clearData() {
+  img.attr('src', '');
+  textId.html('');
+  textName.html('');
+  textAbility.html(''); 
+  textType.html('');
+	textType2.html('');
+  param.val('');
+}
+
+function submit(){
+  var inputValue = $.trim(param.val());
+  if (inputValue === '') return;
+  
+  var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + inputValue;
+
+  $.ajax({
+    type: "GET",
+    url: pokeURL,
+    success: function(data){ 
+      ajaxSuccess(data);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+       ajaxError();
+    }
+  });
+}
+
+function random() {
+    var number = Math.floor(Math.random() * 898) + 1;
+	
+	  var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + number;
+
+  $.ajax({
+    type: "GET",
+    url: pokeURL,
+    success: function(data){ 
+      ajaxSuccess(data);
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+       ajaxError();
+    }
+  });
+}
+
+function ajaxSuccess(data){
+  var imageURI = data.sprites.front_default;
+  var id = data.id;  
+  var name = data.name;
+  var ability = data.abilities;
+  var type = data.types;
+
+  textId.html(id);
+  textName.html(name);
+  textAbility.html(ability[0].ability.name); 
+	
+	var type1 = type[0].type.name;
+  textType.html(type1);
+	getTypeColour1(type1);
+	textType2.html('');
+	
+	if (type.length == 2) {
+		let type2 = type[1].type.name;
+  	textType2.html(type2);
+		getTypeColour2(type2);
+	}
+
+
+  clear.click(function() {
+    clearData();
+  });
+}
+
+function ajaxError(data){
+  clearData();
+}
+
+function changeBg1(name) {
+	textType.css("background-color", name);
+}
+
+function changeBg2(name) {
+	textType2.css("background-color", name);
+}
+
+function getTypeColour1(type) {
+	var pokeType = type;
+	
+	switch (pokeType) {
+		case "normal":
+			changeBg1(normal);
+    	break;
+			
+  	case "fighting":
+    	changeBg1(fighting);
+			break;
+		
+		case "flying":
+    	changeBg1(flying);
+			break;
+			
+		case "poison":
+    	changeBg1(poison);
+			break;
+			
+		case "ground":
+    	changeBg1(ground);
+			break;
+			
+		case "rock":
+    	changeBg1(rock);
+			break;
+			
+		case "bug":
+    	changeBg1(bug);
+			break;
+			
+		case "ghost":
+    	changeBg1(ghost);
+			break;
+			
+		case "steel":
+    	changeBg1(steel);
+			break;
+			
+		case "fire":
+    	changeBg1(fire);
+			break;
+		
+		case "water":
+    	changeBg1(water);
+			break;
+			
+		case "grass":
+    	changeBg1(grass);
+			break;
+					
+		case "electric":
+    	changeBg1(electric);
+			break;
+					
+		case "psychic":
+    	changeBg1(psychic);
+			break;
+					
+		case "ice":
+    	changeBg1(ice);
+			break;
+					
+		case "dragon":
+    	changeBg1(dragon);
+			break;
+					
+		case "fairy":
+    	changeBg1(fairy);
+			break;
+			
+		case "dark":
+    	changeBg1(dark);
+			break;
+	}
+}
+
+function getTypeColour2(type) {
+	var pokeType = type;
+	
+	switch (pokeType) {
+		case "normal":
+			changeBg2(normal);
+    	break;
+			
+  	case "fighting":
+    	changeBg2(fighting);
+			break;
+		
+		case "flying":
+    	changeBg2(flying);
+			break;
+			
+		case "poison":
+    	changeBg2(poison);
+			break;
+			
+		case "ground":
+    	changeBg2(ground);
+			break;
+			
+		case "rock":
+    	changeBg2(rock);
+			break;
+			
+		case "bug":
+    	changeBg2(bug);
+			break;
+			
+		case "ghost":
+    	changeBg2(ghost);
+			break;
+			
+		case "steel":
+    	changeBg2(steel);
+			break;
+			
+		case "fire":
+    	changeBg2(fire);
+			break;
+		
+		case "water":
+    	changeBg2(water);
+			break;
+			
+		case "grass":
+    	changeBg2(grass);
+			break;
+					
+		case "electric":
+    	changeBg2(electric);
+			break;
+					
+		case "psychic":
+    	changeBg2(psychic);
+			break;
+					
+		case "ice":
+    	changeBg2(ice);
+			break;
+					
+		case "dragon":
+    	changeBg2(dragon);
+			break;
+					
+		case "fairy":
+    	changeBg2(fairy);
+			break;
+					
+		case "dark":
+    	changeBg2(dark);
+			break;
+	}
+}
+
+
+
+</script>
 <%- include('includes/foot.ejs') %>
