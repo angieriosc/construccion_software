@@ -50,7 +50,7 @@ function App() {
   
   return (
     <div className="App">
-     <h2>Search your favorites songs or artists :)</h2>
+     <h2>Busca tus canciones favoritas</h2>
      <h3>Spotify API</h3>
      <form onSubmit={handleSearch}>
       <input type="text" name="" id="" 
